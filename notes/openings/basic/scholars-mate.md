@@ -1,4 +1,4 @@
-# 4-Step Chess Mate (Scholar's Mate)
+# Scholar's Mate
 
 The 4-step chess mate, also known as Scholar's Mate, is a quick checkmate pattern that targets the weak f7 square.
 
