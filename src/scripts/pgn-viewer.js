@@ -33,7 +33,15 @@ function enhanceMovementBlocks() {
     pre.insertAdjacentElement('beforebegin', host);
 
     try {
-      LichessPgnViewer(host, { pgn });
+      LichessPgnViewer(host, {
+        pgn,
+        chessground: {
+          animation: {
+            enabled: true,
+            duration: 400,
+          },
+        },
+      });
       pre.remove();
     } catch (error) {
       host.remove();
