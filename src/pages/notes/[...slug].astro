@@ -5,10 +5,11 @@ import { getNoteBySlug, listNotes } from '../../lib/notes';
 
 const slugParam = Astro.params.slug;
 const slug = typeof slugParam === 'string' ? slugParam : '';
+const baseUrl = import.meta.env.BASE_URL;
 const note = await getNoteBySlug(slug);
 
 if (!note) {
-  return Astro.redirect('/');
+  return Astro.redirect(baseUrl);
 }
 
 const html = marked.parse(note.markdown, { gfm: true });
@@ -21,7 +22,7 @@ export async function getStaticPaths() {
 
 <BaseLayout title={`${note.title} | Chess Notes`}>
   <nav>
-    <a href="/">Home</a>
+    <a href={baseUrl}>Home</a>
   </nav>
 
   <article class="note" set:html={html} />

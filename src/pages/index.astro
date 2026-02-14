@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { listNotes } from '../lib/notes';
 
 const notes = await listNotes();
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Chess Notes">
@@ -12,7 +13,7 @@ const notes = await listNotes();
   <ul>
     {notes.map((note) => (
       <li>
-        <a href={`/notes/${note.slug}/`}>{note.title}</a>
+        <a href={`${baseUrl}notes/${note.slug}/`}>{note.title}</a>
         <span class="meta">{note.topicPath}</span>
       </li>
     ))}
