@@ -1,0 +1,31 @@
+---
+import { marked } from 'marked';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getNoteBySlug, listNotes } from '../../lib/notes';
+
+const slugParam = Astro.params.slug;
+const slug = typeof slugParam === 'string' ? slugParam : '';
+const note = await getNoteBySlug(slug);
+
+if (!note) {
+  return Astro.redirect('/');
+}
+
+const html = marked.parse(note.markdown, { gfm: true });
+
+export async function getStaticPaths() {
+  const notes = await listNotes();
+  return notes.map((note) => ({ params: { slug: note.slug } }));
+}
+---
+
+<BaseLayout title={`${note.title} | Chess Notes`}>
+  <nav>
+    <a href="/">Home</a>
+  </nav>
+
+  <article class="note" set:html={html} />
+  <script type="module">
+    import '../../scripts/pgn-viewer';
+  </script>
+</BaseLayout>

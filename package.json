@@ -1,0 +1,23 @@
+{
+  "name": "chessnotes",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@lichess-org/pgn-viewer": "^2.5.7",
+    "astro": "^4.16.18",
+    "fast-glob": "^3.3.3",
+    "gray-matter": "^4.0.3",
+    "marked": "^12.0.2"
+  }
+}

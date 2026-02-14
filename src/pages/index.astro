@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { listNotes } from '../lib/notes';
+
+const notes = await listNotes();
+---
+
+<BaseLayout title="Chess Notes">
+  <h1>Chess Notes</h1>
+  <p>Markdown-first notes with replayable chess movement blocks.</p>
+
+  <ul>
+    {notes.map((note) => (
+      <li>
+        <a href={`/notes/${note.slug}/`}>{note.title}</a>
+        <span class="meta">{note.topicPath}</span>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
